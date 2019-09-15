@@ -21,11 +21,12 @@ Route::get('/', function () {
 // });
 
 Auth::routes();
-
+/*      FRONT       */
 Route::get('/', 'FrontController@index')->name('/');
+Route::get('detail-product/{id}', 'FrontController@detailProduct')->name('detail-product');
 
 
 
 
-
+/*      ADMIN       */  
 Route::get('/in-admin', 'AdminController@index')->name('/in-admin');

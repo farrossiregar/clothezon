@@ -16,4 +16,14 @@ class FrontController extends Controller
     public function home(){
         echo "home2";
     }
+
+    public function detailProduct($id){
+        $params['data'] = Product::where('id', $id)->first();
+
+        return view('Front.single')->with($params);
+    }
+
+    public function addToCart(){
+        
+    }
 }
