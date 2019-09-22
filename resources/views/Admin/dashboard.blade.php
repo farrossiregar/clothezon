@@ -3,9 +3,7 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-
-	{{$test}}
-	<section class="content-wrap">
+        
         <!-- Breadcrumb -->
         <div class="page-title">
 
@@ -286,6 +284,6 @@
             </div>
             <!-- /Pie Chart -->
 		</div>
-	</section>
+        
 
 @endsection

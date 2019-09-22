@@ -12,7 +12,6 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
     echo "test";
 });
 
@@ -29,4 +28,6 @@ Route::get('detail-product/{id}', 'FrontController@detailProduct')->name('detail
 
 
 /*      ADMIN       */  
-Route::get('/in-admin', 'AdminController@index')->name('/in-admin');
+Route::get('/dashboard', 'AdminController@index')->name('/dashboard');
+Route::get('/in-admin', 'AdminController@login')->name('/in-admin');
+Route::post('/login-admin', 'AdminController@loginAdmin')->name('/login-admin');
