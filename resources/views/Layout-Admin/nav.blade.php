@@ -36,7 +36,10 @@
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{route('admin.product')}}" class=" waves-effect waves-blue"> <i class="fa fa-magic"></i> Product </a>
 
+                    </li>
                     <li>
                         <a href="widgets.html" class=" waves-effect waves-blue"> <i class="fa fa-magic"></i> Widgets </a>
 

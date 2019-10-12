@@ -23,6 +23,8 @@ Auth::routes();
 /*      FRONT       */
 Route::get('/', 'FrontController@index')->name('/');
 Route::get('detail-product/{id}', 'FrontController@detailProduct')->name('detail-product');
+Route::post('sign-up', 'FrontController@signUp')->name('sign-up');
+Route::post('sign-in', 'FrontController@signIn')->name('sign-in');
 
 
 
@@ -31,3 +33,12 @@ Route::get('detail-product/{id}', 'FrontController@detailProduct')->name('detail
 Route::get('/dashboard', 'AdminController@index')->name('/dashboard');
 Route::get('/in-admin', 'AdminController@login')->name('/in-admin');
 Route::post('/login-admin', 'AdminController@loginAdmin')->name('/login-admin');
+Route::get('/logout', 'AdminController@logout')->name('/logout');
+
+Route::post('/home', 'DashboardController@profile')->name('/home');
+
+
+//Route::get('/product', 'AdminController@product')->name('/product');
+
+
+

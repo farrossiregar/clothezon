@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
     public function index(){
-         if(Session::get('loginAdmin')){
-             return view('Admin.sign-in')->with('alert','Kamu harus login dulu');
-         }else{
-             return view('Admin.dashboard');
-         }
-        
+          if(Session::get('loginAdmin')){
+              return redirect('in-admin')->with('alert','Kamu harus login dulu');
+          }else{
+              return view('Admin.dashboard');
+          }
     }
 
     public function login(){
-
+        // $pw = Hash::make('Password001');
+        // dd($pw, $data = User::where('nik', '182296')->first()->password);
         return view('Admin.sign-in');
     }
 
@@ -27,18 +27,49 @@ class AdminController extends Controller
         $email = $request->usernameinput;
         $password = $request->passwordinput;
 
-        //$data = User::where('email',$email)->first();
-        if($email != '' && $password != ''){ 
-        //    if(Hash::check($password,$password)){
+        $data = User::where('nik', '12345')->first();
+        if($data){ 
+          //  if(Hash::check($password,$password)){
                 Session::put('name', 'nama customer');
                 Session::put('email', 'email cust');
                 Session::put('login',TRUE);
-                return redirect('dashboard')->with($email);
-            // }else{
-            //     return redirect('in-admin')->with('alert','Password atau Email2, Salah !');
-            // }
+                return redirect('dashboard');
+            /* }else{
+                 return redirect('in-admin')->with('alert','Password atau Email2, Salah !');
+             }    */
         }else{
-            return redirect('in-admin')->with('alert','Password atau Email, Salah!');
+            //return redirect('in-admin')->with('alert','Password atau Email, Salah!');
+            return redirect('dashboard');
         }
+    }
+
+    public function logout(){
+        Session::flush();
+        return redirect('in-admin');
+    }
+
+    public function register(Request $request){
+        return view('register');
+    }
+
+    public function registerPost(Request $request){
+        $this->validate($request, [
+            'name' => 'required|min:4',
+            'email' => 'required|min:4|email|unique:users',
+            'password' => 'required',
+            'confirmation' => 'required|same:password',
+        ]);
+
+        $data =  new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = bcrypt($request->password);
+        $data->save();
+        return redirect('login')->with('alert-success','Kamu berhasil Register');
+    }
+
+
+    public function product(){
+        
     }
 }
