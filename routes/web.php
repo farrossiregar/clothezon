@@ -38,6 +38,9 @@ Route::get('/logout', 'AdminController@logout')->name('/logout');
 Route::post('/home', 'DashboardController@profile')->name('/home');
 
 
+Route::get('product', 'AdminController@product')->name('product');
+
+
 //Route::get('/product', 'AdminController@product')->name('/product');
 
 
